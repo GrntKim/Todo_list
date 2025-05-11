@@ -1,5 +1,6 @@
 let todos = [];
 
+// add task
 function addTodo() {
     const input = document.getElementById('todoInput');
     const text = input.value.trim();
@@ -17,6 +18,14 @@ function addTodo() {
     }
 }
 
+// listen to the keyboard
+document.getElementById('todoInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        addTodo();
+    }
+});
+
+// show task(s)
 function renderTodos() {
     const todoList = document.getElementById('todoList');
     if (!todoList) return;
