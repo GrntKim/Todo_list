@@ -18,6 +18,11 @@ function addTodo() {
     }
 }
 
+// fofus on input field when loaded
+window.addEventListener('load', function() {
+    document.getElementById('todoInput').focus();
+});
+
 // listen to the keyboard
 document.getElementById('todoInput').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
