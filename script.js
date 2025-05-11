@@ -1,24 +1,6 @@
 let todos = [];
 
-// add task
-function addTodo() {
-    const input = document.getElementById('todoInput');
-    const text = input.value.trim();
-
-    if (text) {
-        const todo = {
-            id: Date.now(),
-            text: text,
-            completed: false
-        };
-
-        todos.push(todo);
-        renderTodos();
-        input.value = '';
-    }
-}
-
-// fofus on input field when loaded
+// focus on input field when loaded
 window.addEventListener('load', function() {
     document.getElementById('todoInput').focus();
 });
@@ -39,7 +21,34 @@ function renderTodos() {
     todos.forEach(todo => {
         const li = document.createElement('li');
         li.className = 'todo-item';
-        li.innerHTML = `<span>${todo.text}</span>`;
+        li.innerHTML = `
+        <span>${todo.text}</span>
+        <button onclick="deleteTodo(${todo.id})" class="delete-btn">delete</button>
+        `;
         todoList.appendChild(li);
     });
+}
+
+// add task
+function addTodo() {
+    const input = document.getElementById('todoInput');
+    const text = input.value.trim();
+
+    if (text) {
+        const todo = {
+            id: Date.now(),
+            text: text,
+            completed: false
+        };
+
+        todos.push(todo);
+        renderTodos();
+        input.value = '';
+    }
+}
+
+// delete task
+function deleteTodo(id) {
+    todos = todos.filter(todo => todo.id !== id);
+    renderTodos();
 }
