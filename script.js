@@ -6,9 +6,15 @@ window.addEventListener('load', function() {
 });
 
 // listen to the keyboard
-document.getElementById('todoInput').addEventListener('keypress', function(e) {
+document.getElementById('todoInput').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         addTodo();
+    }
+    if (e.key === 'Escape') {
+        if (todos.length > 0) {
+            const lastTodo = todos[todos.length - 1];
+            deleteTodo(lastTodo.id);
+        }
     }
 });
 
