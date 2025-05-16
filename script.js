@@ -12,8 +12,11 @@ document.getElementById('todoInput').addEventListener('keydown', function(e) {
     }
     if (e.key === 'Escape') {
         if (todos.length > 0) {
-            const lastTodo = todos[todos.length - 1];
-            deleteTodo(lastTodo.id);
+            if (e.shiftKey) {
+                deleteTodo(todos[todos.length - 1].id);
+            } else {
+                deleteTodo(todos[0].id);
+            }
         }
     }
 });
