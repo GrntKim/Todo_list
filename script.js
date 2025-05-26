@@ -77,9 +77,22 @@ function deleteTodo(id) {
 
 // delete all tasks
 function deleteAllTodo() {
-    const message = `Delete ${todos.length} item(s)?`
+    const message = `Delete ${todos.length} item(s)?`;
     if (todos.length && confirm(message)) {
         todos.length = 0;
         renderTodos();
+    }
+}
+
+function toggleInstructions() {
+    const instructions = document.getElementById('instructions');
+    const button = document.querySelector('button');
+
+    if (instructions.style.display === 'none') {
+        instructions.style.display = 'block';
+        button.textContent = 'Hide';
+    } else {
+        instructions.style.display = 'none';
+        button.textContent = 'Help';
     }
 }
