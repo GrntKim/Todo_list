@@ -1,6 +1,6 @@
 let todos = [];
 
-// listen to the keyboard
+// listen to the keyboard - input label
 document.getElementById('todoInput').addEventListener('keyup', function(e) {
     // Enter: add item
     if (e.key === 'Enter') {
@@ -13,6 +13,10 @@ document.getElementById('todoInput').addEventListener('keyup', function(e) {
             addTodo();
         }
     }
+});
+
+// listen to the keyboard - document level (works even if input label is out of focus)
+document.addEventListener('keyup', function(e) {
     // Esc: delete item
     if (e.key === 'Escape') {
         if (todos.length > 0) {
@@ -27,6 +31,9 @@ document.getElementById('todoInput').addEventListener('keyup', function(e) {
                 deleteTodo(todos[todos.length - 1].id);
             }
         }
+    }
+    if (e.key === "i") {
+        document.getElementById('todoInput').focus();
     }
 });
 
