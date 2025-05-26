@@ -1,20 +1,18 @@
 let todos = [];
 
-// focus on input field when loaded
-window.addEventListener('load', function() {
-    document.getElementById('todoInput').focus();
-});
-
 // listen to the keyboard
-document.getElementById('todoInput').addEventListener('keydown', function(e) {
+document.getElementById('todoInput').addEventListener('keyup', function(e) {
+    // Enter: add item
     if (e.key === 'Enter') {
         addTodo();
     }
     if (e.key === 'Escape') {
         if (todos.length > 0) {
             if (e.shiftKey) {
+                // Shift + ESC: delete last item
                 deleteTodo(todos[todos.length - 1].id);
             } else {
+                // ESC: delete first item
                 deleteTodo(todos[0].id);
             }
         }
