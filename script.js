@@ -75,7 +75,7 @@ function deleteTodo(id) {
     renderTodos();
 }
 
-// delete all task
+// delete all tasks
 function deleteAllTodo() {
     const message = `Delete ${todos.length} item(s)?`
     if (todos.length && confirm(message)) {

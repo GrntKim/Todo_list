@@ -2,10 +2,10 @@
 Basic web project - Todo list
 
 ### Features
-- Add task - Completed (250511)
-- Show tasks - Partially completed (250511)
+- Add task 
+- Show tasks
 - Delete tasks
-- Mark task completion status
+- Mark task completion status -TODO 
 
 ### Tech Stack
 - HTML5
