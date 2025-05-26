@@ -9,7 +9,7 @@ Basic web project - Todo list
 
 ### Tech Stack
 - HTML5
-- CSS3
+- CSS3 -TODO
 - JavaScript
 
 ## Getting Started
