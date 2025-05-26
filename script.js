@@ -4,16 +4,23 @@ let todos = [];
 document.getElementById('todoInput').addEventListener('keyup', function(e) {
     // Enter: add item
     if (e.key === 'Enter') {
-        addTodo();
+        if (e.shiftKey) {
+            // Shift + Enter: add item to the top;
+            let front = true;
+            addTodo(front);
+        } else {
+            // Enter: add item to the bottom;
+            addTodo();
+        }
     }
     if (e.key === 'Escape') {
         if (todos.length > 0) {
             if (e.shiftKey) {
-                // Shift + ESC: delete last item
-                deleteTodo(todos[todos.length - 1].id);
-            } else {
-                // ESC: delete first item
+                // Shift + ESC: delete first item
                 deleteTodo(todos[0].id);
+            } else {
+                // ESC: delete last item
+                deleteTodo(todos[todos.length - 1].id);
             }
         }
     }
@@ -37,7 +44,7 @@ function renderTodos() {
 }
 
 // add task
-function addTodo() {
+function addTodo(front = null) {
     const input = document.getElementById('todoInput');
     const text = input.value.trim();
 
@@ -48,7 +55,11 @@ function addTodo() {
             completed: false
         };
 
-        todos.push(todo);
+        if (front) {
+            todos.unshift(todo);
+        } else {
+            todos.push(todo);
+        }
         renderTodos();
         input.value = '';
     }
