@@ -13,11 +13,15 @@ document.getElementById('todoInput').addEventListener('keyup', function(e) {
             addTodo();
         }
     }
+    // Esc: delete item
     if (e.key === 'Escape') {
         if (todos.length > 0) {
             if (e.shiftKey) {
                 // Shift + ESC: delete first item
                 deleteTodo(todos[0].id);
+            } else if (e.ctrlKey) {
+                // Control + ESC: Delete all items
+                deleteAllTodo();
             } else {
                 // ESC: delete last item
                 deleteTodo(todos[todos.length - 1].id);
@@ -69,4 +73,13 @@ function addTodo(front = null) {
 function deleteTodo(id) {
     todos = todos.filter(todo => todo.id !== id);
     renderTodos();
+}
+
+// delete all task
+function deleteAllTodo() {
+    const message = `Delete ${todos.length} item(s)?`
+    if (todos.length && confirm(message)) {
+        todos.length = 0;
+        renderTodos();
+    }
 }
