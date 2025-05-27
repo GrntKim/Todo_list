@@ -1,4 +1,16 @@
 let todos = [];
+let isFocused = true;
+
+// whether input field is focused or blurred
+const input = document.getElementById('todoInput');
+
+input.addEventListener('focus', function() {
+    isFocused = true;
+});
+
+input.addEventListener('blur', function() {
+    isFocused = false;
+});
 
 // listen to the keyboard - input label
 document.getElementById('todoInput').addEventListener('keyup', function(e) {
@@ -17,6 +29,10 @@ document.getElementById('todoInput').addEventListener('keyup', function(e) {
 
 // listen to the keyboard - document level (works even if input label is out of focus)
 document.addEventListener('keydown', function(e) {
+    // If unfocused, Enter to re-focus on input field
+    if (!isFocused && e.key === 'Enter') {
+        document.getElementById('todoInput').focus();
+    }
     // Esc: delete item
     if (e.key === 'Escape') {
         if (todos.length > 0) {
