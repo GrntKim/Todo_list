@@ -2,10 +2,12 @@
 Basic web project - Todo list
 
 ### Features
-- Add task 
-- Show tasks
-- Delete tasks
-- Mark task completion status -TODO 
+- Create task 
+- Read task(s)
+- Update task -TODO
+    - Update task's content -TODO 
+    - Mark task completion status -TODO 
+- Delete task(s)
 
 ### Tech Stack
 - HTML5
