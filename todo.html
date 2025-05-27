@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Todo list</h1>
-        <button onclick="toggleInstructions()">Help</button>
+        <button id="helpButton" onclick="toggleInstructions(this)">Help</button>
         <div style="height: 1em;"></div>
         <div id="instructions" style="display: none;">
             <h2>Instruction</h2>
@@ -21,15 +21,17 @@
                 <dt>Delete</dt>
                 <dd>last item: <b>ESC</b></dd>
                 <dd>first item: <b>Shift + ESC</b></dd>
-                <dd>all items: <b>Control + ESC</b></dd>
+                <dd>all items: <b>Control/Command + ESC</b></dd>
+                <br>
                 <dt>Focus</dt>
                 <dd>input field: <b>i</b></dd>
+                <br>
             </dl>
         </div>
         <div class="todo-input">
             <input type="text" id="todoInput" placeholder="input" autofocus>
-            <button onclick="addTodo()">Add</button>
-            <button onclick="deleteAllTodo()">Delete all</button>
+            <button id="addButton" onclick="addTodo()">Add</button>
+            <button id="deleteAllButton" onclick="deleteAllTodo()">Delete all</button>
         </div>
         <ul id="todoList" class="todo-list">
         </ul>
