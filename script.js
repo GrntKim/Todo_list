@@ -16,15 +16,15 @@ document.getElementById('todoInput').addEventListener('keyup', function(e) {
 });
 
 // listen to the keyboard - document level (works even if input label is out of focus)
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     // Esc: delete item
     if (e.key === 'Escape') {
         if (todos.length > 0) {
             if (e.shiftKey) {
                 // Shift + ESC: delete first item
                 deleteTodo(todos[0].id);
-            } else if (e.ctrlKey) {
-                // Control + ESC: Delete all items
+            } else if (e.ctrlKey || e.metaKey) {
+                // Control(or Command - Mac) + ESC: Delete all items
                 deleteAllTodo();
             } else {
                 // ESC: delete last item
@@ -32,8 +32,8 @@ document.addEventListener('keyup', function(e) {
             }
         }
     }
-    if (e.key === "i") {
-        document.getElementById('todoInput').focus();
+    if (e.ctrlKey && e.key === 'h') {
+        toggleInstructions(document.getElementById('helpButton'));
     }
 });
 
@@ -91,9 +91,8 @@ function deleteAllTodo() {
     }
 }
 
-function toggleInstructions() {
+function toggleInstructions(button) {
     const instructions = document.getElementById('instructions');
-    const button = document.querySelector('button');
 
     if (instructions.style.display === 'none') {
         instructions.style.display = 'block';
