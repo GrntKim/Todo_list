@@ -19,12 +19,15 @@
                 <dd>to the top: <b>Shift + Enter</b></dd>
                 <br>
                 <dt>Delete</dt>
-                <dd>last item: <b>ESC</b></dd>
-                <dd>first item: <b>Shift + ESC</b></dd>
-                <dd>all items: <b>Control/Command + ESC</b></dd>
+                <dd>last item: <b>Esc</b></dd>
+                <dd>first item: <b>Shift + Esc</b></dd>
+                <dd>all items: <b>Ctrl/Cmd + Esc</b></dd>
                 <br>
                 <dt>Focus</dt>
-                <dd>input field: <b>i</b></dd>
+                <dd>input field: <b>Enter</b></dd>
+                <br>
+                <dt>Toggle</dt>
+                <dd>these instructions: <b>Ctrl/Cmd + H</b></dd>
                 <br>
             </dl>
         </div>
@@ -33,8 +36,8 @@
             <button id="addButton" onclick="addTodo()">Add</button>
             <button id="deleteAllButton" onclick="deleteAllTodo()">Delete all</button>
         </div>
-        <ul id="todoList" class="todo-list">
-        </ul>
+        <ol id="todoList" class="todo-list">
+        </ol>
     </div>
     <script src="script.js"></script>
 </body>
