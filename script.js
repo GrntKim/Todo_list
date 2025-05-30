@@ -1,6 +1,6 @@
 let todos = [];
 let isFocused = true;
-
+let nextId = 0;
 // whether input field is focused or blurred
 const input = document.getElementById('todoInput');
 
@@ -48,7 +48,8 @@ document.addEventListener('keydown', function(e) {
             }
         }
     }
-    if (e.ctrlKey && e.key === 'h') {
+    // Control(or Command - Mac) + H: toggle instructions
+    if ((e.ctrlKey || e.metaKey) && e.code === 'KeyH') {
         toggleInstructions(document.getElementById('helpButton'));
     }
 });
@@ -63,11 +64,21 @@ function renderTodos() {
         const li = document.createElement('li');
         li.className = 'todo-item';
         li.innerHTML = `
-        <span>${todo.text}</span>
+        <span>${todo.content}</span>
         <button onclick="deleteTodo(${todo.id})" class="delete-btn">delete</button>
+        <button onclick="updateTodo(${todo.id})" class="update-btn">update</button>
         `;
         todoList.appendChild(li);
     });
+}
+
+// create task
+function createTodo(content) {
+    return {
+        id: nextId++,
+        content: content,
+        completed: false
+    };
 }
 
 // add task
@@ -76,11 +87,7 @@ function addTodo(front = null) {
     const text = input.value.trim();
 
     if (text) {
-        const todo = {
-            id: Date.now(),
-            text: text,
-            completed: false
-        };
+        const todo = createTodo(text);
 
         if (front) {
             todos.unshift(todo);
@@ -107,6 +114,7 @@ function deleteAllTodo() {
     }
 }
 
+// toggle instructions section - triggered by clicking or keyboard shortcut
 function toggleInstructions(button) {
     const instructions = document.getElementById('instructions');
 
@@ -116,5 +124,20 @@ function toggleInstructions(button) {
     } else {
         instructions.style.display = 'none';
         button.textContent = 'Help';
+    }
+}
+
+function updateTodo(id) {
+    const todo = todos.find(todo => todo.id === id);
+    if (!todo) return;
+
+    const newContent = prompt('Update...', todo.content);
+
+    if (newContent === null) return;
+
+    if (newContent.trim()) {
+        todo.content = newContent.trim();
+        renderTodos();
+        document.getElementById('todoInput').focus();
     }
 }

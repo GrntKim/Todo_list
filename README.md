@@ -4,9 +4,8 @@ Basic web project - Todo list
 ### Features
 - Create task 
 - Read task(s)
-- Update task -TODO
-    - Update task's content -TODO 
-    - Mark task completion status -TODO 
+- Update task
+    - Update task's content
 - Delete task(s)
 
 ### Tech Stack
