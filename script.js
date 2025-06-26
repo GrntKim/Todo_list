@@ -49,7 +49,7 @@ document.addEventListener('keydown', function(e) {
         }
     }
     // Control(or Command - Mac) + H: toggle instructions
-    if ((e.ctrlKey || e.metaKey) && e.code === 'KeyH') {
+    if ((e.ctrlKey) && e.code === 'KeyH') {
         toggleInstructions(document.getElementById('helpButton'));
     }
 });
